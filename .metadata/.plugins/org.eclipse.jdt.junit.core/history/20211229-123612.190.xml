@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="InvoiceInfoApplicationTests.testDelete" project="invoiceInfo" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.project1.invoiceInfo.InvoiceInfoApplicationTests" time="0.954" displayname="InvoiceInfoApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.project1.invoiceInfo.InvoiceInfoApplicationTests]">
-    <testcase name="testDelete" classname="com.project1.invoiceInfo.InvoiceInfoApplicationTests" time="0.954" displayname="testDelete()" uniqueid="[engine:junit-jupiter]/[class:com.project1.invoiceInfo.InvoiceInfoApplicationTests]/[method:testDelete()]"/>
-  </testsuite>
-</testrun>

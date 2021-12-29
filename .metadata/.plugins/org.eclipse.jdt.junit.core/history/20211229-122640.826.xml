@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="InvoiceInfoApplicationTests.testingSingleInvoice" project="invoiceInfo" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.project1.invoiceInfo.InvoiceInfoApplicationTests" time="0.56" displayname="InvoiceInfoApplicationTests" uniqueid="[engine:junit-jupiter]/[class:com.project1.invoiceInfo.InvoiceInfoApplicationTests]">
-    <testcase name="testingSingleInvoice" classname="com.project1.invoiceInfo.InvoiceInfoApplicationTests" time="0.56" displayname="testingSingleInvoice()" uniqueid="[engine:junit-jupiter]/[class:com.project1.invoiceInfo.InvoiceInfoApplicationTests]/[method:testingSingleInvoice()]"/>
-  </testsuite>
-</testrun>
