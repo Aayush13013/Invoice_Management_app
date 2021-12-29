@@ -1,0 +1,78 @@
+package com.project1.invoiceInfo.controller;
+
+import com.project1.invoiceInfo.entity.InvoiceInfo;
+import com.project1.invoiceInfo.entity.Product;
+import com.project1.invoiceInfo.service.InvoiceInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
+
+@Controller
+public class InvoiceInfoController {
+    @Autowired
+    private InvoiceInfoService invoiceInfoService;
+
+    @GetMapping("/")
+    public String InvoiceInfoListPage(Model model) {
+        model.addAttribute("InvoiceInfoList", invoiceInfoService.getAllInvoiceInfo());
+//        model.addAttribute("products",invoiceInfoService.getAllProducts());
+        return "Home";
+    }
+
+    @GetMapping("/openNewInvoiceInfoForm")
+    public String openNewInvoiceInfoForm(Model model) {
+        InvoiceInfo invoiceInfo = new InvoiceInfo();
+        model.addAttribute("invoiceInfo", invoiceInfo);
+        return "new_invoiceInfo";
+    }
+//    @RequestMapping(value="/openNewInvoiceInfoForm", params={"addRow"})
+//    public String addRow(final InvoiceInfo invoiceInfo) {
+//        invoiceInfo.getListOfProducts().add(new Product());
+//        return "openNewInvoiceInfoForm";
+//    }
+//
+//
+//    @RequestMapping(value="/openNewInvoiceInfoForm", params={"removeRow"})
+//    public String removeRow(final InvoiceInfo invoiceInfo, final HttpServletRequest req) {
+//        final Integer productId = Integer.valueOf(req.getParameter("removeRow"));
+//        invoiceInfo.getListOfProducts().remove(productId.intValue());
+//        return "openNewInvoiceInfoForm";
+//    }
+
+    @PostMapping("/saveInvoice")
+    public String saveInvoiceInfo(@ModelAttribute("invoiceInfo") InvoiceInfo invoiceInfo) {
+//        model.addAttribute("list",product.toString());
+//        System.out.println(product.toString());
+        System.out.println(invoiceInfo);
+        
+        invoiceInfoService.saveInvoiceInfo(invoiceInfo);
+        return "redirect:/";
+    }
+
+    @GetMapping("/editInvoiceForm/{id}")
+    public String editInvoiceForm(@PathVariable(value = "id") long id , Model model) {
+        InvoiceInfo invoiceInfo= invoiceInfoService.getInvoiceById(id);
+        model.addAttribute("invoiceInfo",invoiceInfo);
+        return "update_invoiceInfo";
+    }
+    @GetMapping("/deleteInvoiceByid/{id}")
+    public String deleteInvoiceByid(@PathVariable(value = "id") long id){
+            this.invoiceInfoService.deleteInvoiceById(id);
+            return "redirect:/";
+    }
+    @GetMapping("/page/{pageNo}")
+    public String findPaginated(@PathVariable("pageNo")int pageNo) {
+    	int pageSize=5;
+    	
+    }
+    
+    
+    
+    
+}

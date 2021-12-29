@@ -1,0 +1,70 @@
+package com.project1.invoiceInfo;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.registerCustomDateFormat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+
+
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.project1.invoiceInfo.entity.InvoiceInfo;
+import com.project1.invoiceInfo.repository.InvoiceRepository;
+
+@SpringBootTest
+class InvoiceInfoApplicationTests {
+
+	
+
+	@Autowired
+	InvoiceRepository invoiceRepository;
+	@Test
+	public void testCreate() throws ParseException {
+		InvoiceInfo info = new InvoiceInfo();
+		info.setId(1L);
+		info.setBillTo("Aayush");
+	   
+		DateFormat format = new SimpleDateFormat("yyyy-mm-dd");
+		Date dueDate = format.parse("2021-01-01");
+		Date invoiceDate = format.parse("2021-02-01");
+		info.setDueDate(dueDate);
+	} 
+	@Test
+	public void testReadAll() {
+		List<InvoiceInfo> list= invoiceRepository.findAll();
+		assertThat(list).size().isGreaterThan(0);
+	}
+	
+	@Test
+	public void testingSingleInvoice() {
+		InvoiceInfo invoiceInfo = invoiceRepository.findById(1L).get();
+		assertEquals("aayush", invoiceInfo.getBillTo());
+	}
+	
+	@Test
+	public void testSave() {
+		InvoiceInfo info = invoiceRepository.findById(1L).get();
+		info.setGrandTotal("100.00");
+		invoiceRepository.save(info);
+		assertNotEquals("200", invoiceRepository.findById(1L).get().getGrandTotal());
+	}
+	
+	@Test
+	public void testDelete() {
+		invoiceRepository.deleteById(1L);
+		assertThat(invoiceRepository.existsById(1L)).isFalse();
+	}
+	
+	
+
+}

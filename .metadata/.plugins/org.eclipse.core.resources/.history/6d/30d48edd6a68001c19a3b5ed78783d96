@@ -1,0 +1,32 @@
+package com.project1.invoiceInfo.service;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+
+public class InvoiceInfoServiceTest {
+
+	@Test
+	public void testGetAllInvoiceInfo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	@Disabled
+	public void testSaveInvoiceInfo() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	@Disabled
+	public void testGetInvoiceById() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testDeleteInvoiceById() {
+		fail("Not yet implemented");
+	}
+
+}

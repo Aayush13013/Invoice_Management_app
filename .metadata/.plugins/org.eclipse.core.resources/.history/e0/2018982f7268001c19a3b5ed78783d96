@@ -1,0 +1,23 @@
+package com.project1.invoiceInfo;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.project1.invoiceInfo.entity.InvoiceInfo;
+import com.project1.invoiceInfo.repository.InvoiceRepository;
+
+@SpringBootTest
+class InvoiceInfoApplicationTests {
+
+	
+
+	@Autowired
+	InvoiceRepository invoiceRepository;
+	@Test
+	public void testReadAll() {
+		InvoiceInfo info = new InvoiceInfo();
+		info.
+	}
+
+}
